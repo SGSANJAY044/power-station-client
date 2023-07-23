@@ -20,10 +20,6 @@ function Home() {
         headerName:"Name"
         },
         {
-          field:'company_name',
-          headerName:"Company"
-        },
-        {
         field:'lat',
         headerName:"Latitude"
         },

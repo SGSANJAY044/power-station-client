@@ -5,10 +5,10 @@ function Navbar() {
     return (
         <div className='w-full h-20  p-10'>
             <div className='w-full h-full flex items-center justify-center gap-32 '>
-                <Link to='/admin/home'>Home</Link>
-                <Link to='/admin/map'>Map</Link>
-                <Link to='/admin/control'>Control</Link>
-                <Link to='/admin/contact'>Contact</Link>
+                <Link to='/host/home'>Home</Link>
+                <Link to='/host/map'>Map</Link>
+                <Link to='/host/control'>Control</Link>
+                <Link to='/host/contact'>Contact</Link>
             </div>
         </div>
     )

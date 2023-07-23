@@ -21,7 +21,7 @@ const MapContainer = ({ google }) => {
     <Map
       google={google}
       zoom={4}
-      initialCenter={{ lat: 37.7749, lng:  -122.4194 }}
+      initialCenter={{ lat: 20.5937, lng:  78.9629 }}
     >
       {markers.map((marker, index) => (
         <Marker
