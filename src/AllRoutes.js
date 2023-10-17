@@ -15,10 +15,12 @@ import HostMap from './pages/HostMap'
 import HostControl from './pages/HostControl'
 import HostContact from './pages/HostContact'
 function AllRoutes() {
+    const token = localStorage.getItem("token");
     return (
         <Routes>
             <Route path='/login' element={<Login/>}/>
             <Route path='/signin' element={<Signup/>}/>
+            { token ? <>
             <Route path='/user/home' element={<UserHome/>}/>
             <Route path='/admin/home' element={<AdminHome/>}/>
             <Route path='/user/map' element={<UserMap/>}/>
@@ -31,7 +33,8 @@ function AllRoutes() {
             <Route path='/host/map' element={<HostMap/>}/>
             <Route path='/host/control' element={<HostControl/>}/>
             <Route path='/host/contact' element={<HostContact/>}/>
-
+            </>:<>Bad request</>
+            }
         </Routes>
     )
 }

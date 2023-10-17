@@ -29,4 +29,4 @@ export const deleteStation = (authData) => API.put('/station/deleteuser',authDat
 
 //host
 
-export const alldata = (authData) => API.get('/host/getall',authData)
+export const alldata = () => API.get('/host/getall')

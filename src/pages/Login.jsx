@@ -17,10 +17,11 @@ function Login() {
         console.log(response);
         dispatch(userAction.Adduser(response?.data?.user))
         if(response?.data?.user?.email==email){
-                if(response?.data?.user?.isAdmin)
-                navigate('/admin/home')
-                else
-                navigate('/user/home')
+            localStorage.setItem('token', response.data.token);
+             if(response?.data?.user?.isAdmin)
+             navigate('/admin/home')
+             else
+             navigate('/user/home')
               }
         })
         .catch(function (error) {
