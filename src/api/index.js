@@ -8,7 +8,12 @@ export const signup = (authData) => API.post('/user/signin',authData)
 
 //getallstations
 
-export const station = (authData) => API.get('/station/getallstations',authData)
+export const station = () => API.get('/station/getallstations')
+
+//station_activate
+
+export const activateStation = (authData) => API.post('/host/activate',authData)
+
 
 //station_insert
 

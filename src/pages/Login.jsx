@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import {userAction} from '../reducers/user';
+import {userAction} from '../store/slices/user';
 import car from '../assets/images/login.png'
+import { login } from '../api';
 function Login() {
     const dispatch=useDispatch();
     const navigate=useNavigate();
@@ -11,14 +12,11 @@ function Login() {
     const [password,setPassword]=useState('');
     const handleSubmit=()=>{
         console.log("hi");
-        axios.post('http://localhost:8088/api/user/login', {
-            email: email,
-            password: password
-          })
-          .then(function (response) {
-            console.log(response);
-            dispatch(userAction.Adduser(response?.data?.user))
-            if(response?.data?.user?.email==email){
+        login( {email: email,password: password})
+        .then(function (response) {
+        console.log(response);
+        dispatch(userAction.Adduser(response?.data?.user))
+        if(response?.data?.user?.email==email){
                 if(response?.data?.user?.isAdmin)
                 navigate('/admin/home')
                 else
@@ -28,7 +26,7 @@ function Login() {
         .catch(function (error) {
             alert(error.response.data)
             console.log(error);
-          });
+        });
           
     }
     return (

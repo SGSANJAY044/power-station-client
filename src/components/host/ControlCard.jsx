@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
 import axios from 'axios';
 import image from '../../assets/images/station.jpg'
+import { insertStation } from '../../api';
 function ControlCard() {
     const [id,setId]=useState('');
     const [name,setName]=useState('');
@@ -21,13 +22,7 @@ function ControlCard() {
     //   } catch (error) {
     //     console.log('Error:', error);
     //   }
-    axios.post('http://localhost:8088/api/station/insert',{
-        id:id,
-        name:name,
-        company_name:'Tesla',
-        lat:latitude,
-        lon:longitude
-    })
+    insertStation({id:id,name:name,company_name:'Tesla',lat:latitude,lon:longitude})
     .then( (response)=>{
       console.log(response.data);
   })

@@ -3,7 +3,8 @@ import axios from 'axios';
 import { useNavigate,Link } from 'react-router-dom';
 import car from '../assets/images/login.png'
 import { useDispatch } from 'react-redux';
-import { userAction } from '../reducers/user';
+import { userAction } from '../store/slices/user';
+import { signup } from '../api';
 function Signup() {
     const dispatch=useDispatch()
     const navigate=useNavigate();
@@ -13,12 +14,7 @@ function Signup() {
     const [name,setName]=useState('');
     const handleSubmit=()=>{
         console.log("hi");
-        axios.post('http://localhost:8088/api/user/signin', {
-            name:name,
-            email: email,
-            password: password,
-            phone:phone
-          })
+       signup({name:name,email: email,password: password,phone:phone})
           .then(function (response) {
             console.log(response);
             dispatch(userAction.Adduser(response?.data?.user))

@@ -1,11 +1,12 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { station } from '../../api';
 
 const MapContainer = ({ google }) => {
   const [data,setData]=useState([]);
     useEffect(()=>{
-        axios.get('http://localhost:8088/api/station/getallstations')
+        station()
           .then( (response)=>{
             console.log(response.data);
             setData(response.data)

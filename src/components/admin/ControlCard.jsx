@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
 import { DataGrid } from '@mui/x-data-grid'
+import { activateStation, alldata, station } from '../../api';
 function ControlCard() {
   const [data,setData]=useState([]);
   useEffect(()=>{
-      axios.get('http://localhost:8088/api/host/getall')
-        .then( (response)=>{
+      alldata()
+      .then( (response)=>{
           console.log(response.data);
           setData(response.data)
       })
@@ -46,12 +46,7 @@ function ControlCard() {
       },
       ]
       const handleButtonClick = (rowData) => {
-        axios.post('http://localhost:8088/api/host/activate', {
-            company_name: rowData.company_name
-          })
-          .then(function (response) {
-            console.log(response)
-          })
+        activateStation({company_name: rowData.company_name})
         .catch(function (error) {
             alert(error.response.data)
             console.log(error);
